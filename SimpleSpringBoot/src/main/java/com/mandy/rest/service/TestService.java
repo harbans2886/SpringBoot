@@ -9,7 +9,11 @@ public class TestService {
 		System.out.println("Test Service has been initialized...");
 	}
 
-	public String getInfo() {
-		return "Return Info Stack";
+	public String getInfo_v1() {
+		return "Return Info Stack v1";
 	}
+	
+	/*public String getInfo_v2() {
+		return "Return Info Stack v2";
+	}*/
 }
