@@ -1,0 +1,47 @@
+Create a docker image using mvnw(maven wrapper)
+
+./mvnw com.google.cloud.tools:jib-maven-plugin:build -Dimage=gcr.io/$GOOGLE_CLOUD_PROJECT/simplespringboot:v1
+
+Login into the cluster
+
+gcloud container clusters get-credentials mandy-cluster-1 --zone us-central1-a
+
+What are the PODS running in the cluster
+kubectl get pods
+
+What are the Services running in the cluster
+
+kubectl get services
+
+What are the Deployments running in the cluster
+
+kubectl get deployment
+
+Check if Docker image is good or not
+
+docker run -ti --rm -p 8080:8080 gcr.io/$GOOGLE_CLOUD_PROJECT/simplespringboot:v1
+
+run a Deployment into the Kubernetes cluster
+
+kubectl run simplespringboot --image=gcr.io/$GOOGLE_CLOUD_PROJECT/simplespringboot:v1 --port=8080
+
+check the deployments
+
+kubectl get deployments
+
+kubectl get pods
+
+kubectl get services
+
+
+Expose Load Balancer using commands (can be done via .yml file which is a good practice)
+kubectl expose deployment simplespringboot --type=LoadBalancer
+
+How to scale the deployment using commands(will do it using .yml file)
+kubectl scale deployment simplespringboot --replicas=3
+
+
+-------------------------------------
+
+kubectl apply -f deployment.yml
+
